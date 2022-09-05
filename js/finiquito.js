@@ -1,4 +1,4 @@
-let causaDespido = prompt(`Indique el número causa de desvinculación de la empresa:
+let causaDespido = prompt(`Indique la causa de desvinculación de la empresa:
 1. Necesidades de la empresa
 2. Renuncia Voluntaria
 3. Mutuo acuerdo`)
