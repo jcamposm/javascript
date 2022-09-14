@@ -17,27 +17,15 @@ const pedido6 = new pedido (6, "Pepinillo", 800)
 const pedido7 = new pedido (7, "Queso", 700)
 const pedido8 = new pedido (8, "Tocino", 1200)
 
-//ARRAY DE ORDEN
-const orden = [];
-//AÑADIR A LA ORDEN
-orden.push (pedido1);
-orden.push (pedido2);
-orden.push (pedido3);
-orden.push (pedido4);
-orden.push (pedido5);
-orden.push (pedido6);
-orden.push (pedido7);
-orden.push (pedido8);
-
 //ARRAY DE CARRITO
 const carrito = [];
 
 //BIENVENIDA
-let bienvenida = prompt(`Bienvenido a ConstruBurger, ¿Le gustaría armar su pedido? \n`)
-//BUCLE DE PEDIDO
-while (bienvenida != "no" && bienvenida != "NO") {
-agregar()
-break
+
+if (confirm(`Bienvenido a ConstruBurger, ¿Le gustaría armar su pedido? \n`)) {
+    agregar()
+} else {
+    alert("¡Hasta pronto!");
 }
 
 //FUNCION DE PEDIDO
@@ -52,12 +40,40 @@ let productoId = Number(prompt (`¿Qué desea añadir a su Hamburguesa?:
 7. Queso
 8. Tocino
 9. TERMINAR PEDIDO`))
+
 //BUCLE DE PEDIDO DENTRO DE FUNCIÓN
 while (productoId != 9) {
-let pedido = orden.find((pedido) => pedido.id===productoId)
-pedido.total = pedido.precio
-carrito.push(pedido)
-
+//CONDICIONES PARA AGREGAR AL CARRITO
+switch (productoId){
+case 1:
+carrito.push(pedido1)
+break
+case 2:
+carrito.push(pedido2)
+break
+case 3:
+carrito.push(pedido3)
+break
+case 4:
+carrito.push(pedido4)
+break
+case 5:
+carrito.push(pedido5)
+break
+case 6:
+carrito.push(pedido6)
+break
+case 7:
+carrito.push(pedido7)
+break
+case 8:
+carrito.push(pedido8)
+break
+default:
+    alert("tu opcion es incorrecta")
+    break
+}
+//PREGUNTA DE BUCLE
 productoId = Number(prompt (`¿Qué otro ingrediente desea añadir?:
 1. Hamburguesa
 2. Hamburguesa de soya
@@ -69,8 +85,9 @@ productoId = Number(prompt (`¿Qué otro ingrediente desea añadir?:
 8. Tocino
 9. TERMINAR PEDIDO`))
 }
-
+//CONSOLE LOG PARA TENER UN CONTROL DEL CARRITO
 console.log(carrito)
+//IR A FUNCIÓN REVISAR PEDIDO
 revisar()
 }
 //FUNCIÓN UPSALE PARA COMPRAR PAPAS Y BEBIDA
@@ -108,9 +125,8 @@ if (eleccion == 1) {
 
 //FUNCIÓN PARA CALCULAR TOTAL DEL PEDIDO
 function calcularTotal(carrito){
-    let total = 0;
-    carrito.forEach(producto=> {
-        total += producto.total
-    })
+    let total = carrito.reduce((acumulador, pedido)=> {
+        return acumulador + pedido.precio
+    },0)
     return total
 }
