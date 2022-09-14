@@ -8,6 +8,8 @@ header {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: 20px;
+
 }
 h1 {
     justify-content: space-between;
