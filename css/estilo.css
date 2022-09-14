@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/* ESTILO ETIQUETAS GENERALES */
+* {
+margin: 0;
+padding: 0;
+}
+header {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+h1 {
+    justify-content: space-between;
+    text-align: center;
+}
+
+main {
+   /* border: solid 1px #000; */
+    height: 100px;
+}
+
+div .container{
+    border: solid 1px #000;
+    height: 100px;
+}
+div .ingrediente{
+    border: solid 1px #000;
+    height: 100px;
+}
+div .panup {
+    border: solid 1px #000;
+    height: 100px;
+}
+div {
+    justify-content: center !important;
+}
+.container{
+    justify-content: center !important;
+}
+
+button {
+    justify-content: center !important;
+    margin-top: 40px;
+    width: 200px;
+    height: 40px;
+}
