@@ -28,21 +28,32 @@ if (confirm(`Bienvenido a ConstruBurger, ¿Le gustaría armar su pedido? \n`)) {
     alert("¡Hasta pronto!");
 }
 
-//FUNCION DE PEDIDO
-function agregar(){
-let productoId = Number(prompt (`¿Qué desea añadir a su Hamburguesa?:
-1. Hamburguesa
-2. Hamburguesa de soya
-3. Lechuga
-4. Tomate
-5. Cebolla
-6. Pepinillo
-7. Queso
-8. Tocino
-9. TERMINAR PEDIDO`))
+let boton1 = document.querySelector(".preciofinal")
+boton1.addEventListener("click", () => {revisar()})
 
-//BUCLE DE PEDIDO DENTRO DE FUNCIÓN
-while (productoId != 9) {
+/*
+let boton2 = document.getElementById(`hola${pedido.id}`)
+document.addEventListener("click", borrar(e))
+
+function borrar(e) {
+let botonazo = e.target
+botonazo.parentElement.remove()
+}*/
+
+let boton = document.querySelector(".btnPrincipal")
+//boton.addEventListener("click", () =>{agregar()})
+
+document.addEventListener("click", (evento) => {
+    console.log(evento.target.dataset.ingredient)
+    let valor = parseInt(evento.target.dataset.ingredient)
+    //console.log(`este es el valor: ${valor}`)
+    agregar(valor)
+})
+
+function agregar(x){
+
+let productoId = x
+
 //CONDICIONES PARA AGREGAR AL CARRITO
 switch (productoId){
 case 1:
@@ -102,28 +113,16 @@ let tocino = document.createElement("div")
 tocino.innerHTML = "<div class='ingrediente tocino animate_animated animatefadeInUp animate_delay-1s'>tocino</div>"
 ingrediente8.appendChild(tocino)
 break
+case 9:
+revisar()
+break
 default:
-    alert("tu opcion es incorrecta")
+   // alert("tu opcion es incorrecta")
     break
 }
+}
 
-//PREGUNTA DE BUCLE
-productoId = Number(prompt (`¿Qué otro ingrediente desea añadir?:
-1. Hamburguesa
-2. Hamburguesa de soya
-3. Lechuga
-4. Tomate
-5. Cebolla
-6. Pepinillo
-7. Queso
-8. Tocino
-9. TERMINAR PEDIDO`))
-}
-//CONSOLE LOG PARA TENER UN CONTROL DEL CARRITO
-console.log(carrito)
-//IR A FUNCIÓN REVISAR PEDIDO
-revisar()
-}
+
 //FUNCIÓN UPSALE PARA COMPRAR PAPAS Y BEBIDA
 function upsale(){
     let agregarOtro = Number(prompt(`Finalizando pedido:
@@ -131,38 +130,33 @@ function upsale(){
     2. No agregar y finalizar pedido`))
 if (agregarOtro == 1){
     calcularTotal(carrito)
-        alert(`El total de su pedido es: $${calcularTotal(carrito)+1990}`)
+    const valorTotal = document.querySelector("#precio")
+        valorTotal.innerHTML = `<h3><center>Total a pagar $${calcularTotal(carrito)+1990}</center></h3>`
+        valorTotal.appendChild(precio) 
+//        alert(`El total de su pedido es: $${calcularTotal(carrito)+1990}`)
         }
 else if (agregarOtro == 2) {
         calcularTotal(carrito)
-        alert(`El total de su pedido es: $${calcularTotal(carrito)}`)
+        const valorTotal = document.querySelector("#precio")
+        valorTotal.innerHTML = `<h3><center>Total a pagar $${calcularTotal(carrito)+1990}</center></h3>`
+        valorTotal.appendChild(precio) 
+//        alert(`El total de su pedido es: $${calcularTotal(carrito)}`)
         } else {
         alert("Valor inválido, vuelve a intentarlo")    
         upsale()
-        }    
+        }   
+        const valorTotal = document.querySelector("#precio")
+        valorTotal.innerHTML = `<h3><center>Total a pagar $${calcularTotal(carrito)}</center></h3>`
+        valorTotal.appendChild(precio) 
 }
 //FUNCIÓN PARA REVISAR PEDIDO
 function revisar(){
     const ingredientes = carrito.map((pedido) => pedido.ingrediente)
-    alert(`Su pedido es:
+    console.log(`Su pedido es:
     ${ingredientes} por un total de $${calcularTotal(carrito)}`)
 //FINALIZANDO PEDIDO
-let eleccion = Number(prompt(`seleccione si desea: 
-1. Agregar más ingredientes a su orden
-2. Finalizar su orden`))
-
-if (eleccion == 1) {
-    agregar();
-} else {
     upsale();
-}}
-//MOSTRAR PRECIO
-//const aliados = document.querySelector("h1").textContent= "Su pedido de construburger es:";
-//console.log(aliados);
-
-const valorTotal = document.querySelector("#precio")
-valorTotal.innerHTML = `<h3><center>Total a pagar $${calcularTotal(carrito)}</center></h3>`
-valorTotal.appendChild(precio)
+}
 
 //FUNCIÓN PARA CALCULAR TOTAL DEL PEDIDO
 function calcularTotal(carrito){
@@ -171,3 +165,4 @@ function calcularTotal(carrito){
     },0)
     return total
 }
+
