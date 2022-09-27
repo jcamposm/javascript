@@ -31,14 +31,14 @@ if (confirm(`Bienvenido a ConstruBurger, ¿Le gustaría armar su pedido? \n`)) {
 let boton1 = document.querySelector(".preciofinal")
 boton1.addEventListener("click", () => {revisar()})
 
-/*
-let boton2 = document.getElementById(`hola${pedido.id}`)
-document.addEventListener("click", borrar(e))
+/*let boton2 = document.querySelector(`#hola`)
+boton2.onclick = () =>{borrar(e)}
 
-function borrar(e) {
-let botonazo = e.target
-botonazo.parentElement.remove()
+function borrar (e){
+    let carrito = e.target
+    carrito.parseElement.remove()
 }*/
+
 
 let boton = document.querySelector(".btnPrincipal")
 //boton.addEventListener("click", () =>{agregar()})
@@ -54,13 +54,14 @@ function agregar(x){
 
 let productoId = x
 
+
 //CONDICIONES PARA AGREGAR AL CARRITO
 switch (productoId){
 case 1:
 carrito.push(pedido1)
 let ingrediente = document.querySelector("#construburger")
 let carne = document.createElement("div")
-carne.innerHTML = "<div class='ingrediente carne animate_animated animatefadeInUp animate_delay-1s'>carne</div>"
+carne.innerHTML = "<div class='ingrediente carne animate_animated animatefadeInUp animate_delay-1s'>carne</div></button>"
 ingrediente.appendChild(carne)
 //document.body.append(carne)
 break
@@ -165,4 +166,3 @@ function calcularTotal(carrito){
     },0)
     return total
 }
-

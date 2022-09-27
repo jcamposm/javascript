@@ -1,91 +1,38 @@
-@charset "UTF-8";
-/* ESTILO ETIQUETAS GENERALES */
-* {
+*{
     margin: 0;
     padding: 0;
-    }
-    header {
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 20px;
-    
-    }
-    h1 {
-        justify-content: space-between;
-        text-align: center;
-    }
-    
-    main {
-       /* border: solid 1px #000; */
-        height: 100px;
-    }
-    
-    div .container{
-        border: solid 1px #000;
-        height: 100px;
-    }
-    div .ingrediente{
-        border: solid 1px #000;
-        height: 25px;
-        text-align: center !important;
-    }
-    div .panarriba {
-        border: solid 3px rgb(213, 147, 61);
-        border-radius: 10px !important;
-        height: 60px;
-        background-color: darkkhaki;
-        margin-bottom: 10px;
-        text-align: center !important;
-    }
-    div .panabajo {
-        border: solid 3px rgb(213, 147, 61);
-        border-radius: 10px !important;
-        height: 60px;
-        background-color: darkkhaki;
-        margin-top: 10px;
-        text-align: center !important;
-    }
-    div {
-        justify-content: center !important;
-    }
-    .container{
-        justify-content: center !important;
-    }
-    
-    button {
-        justify-content: center !important;
-        margin-top: 40px;
-        width: 170px;
-        height: 40px;
-    }
-    .carne {
-        background-color:saddlebrown;
-    }
-    .soya{
-        background-color:blanchedalmond;
-    }
-    .tomate{
-        background-color: #ff0000;
-    }
-    .lechuga{
-        background-color:chartreuse;
-    }
-    .cebolla {
-        background-color:darkviolet;
-    }
-    .pepinillo {
-        background-color:darkolivegreen;
-    }
-    .queso {
-        background-color: gold;
-    }
-    .tocino {
-        background-color:brown;
-    }
+}
 
-    .pagar{
-        display: flex;
-        margin: 20px;
-        justify-content: center;
-    }
+img .pan {
+z-index: 1 !important;
+justify-content: center;
+}
+
+img .pan-cierre {
+    z-index: -10 !important;
+    justify-content: center;
+}
+
+button{
+    z-index: 10 !important;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0;
+    color: none !important;
+    text-decoration: none;
+    background-color:rgba(255,255,255,0) !important;
+    border: 0px solid rgba(255,255,255,0);
+}
+
+.list-group-item img {
+    margin-top: -12px;
+    margin-bottom: -12px;
+}
+
+#seccionMuestraextras img {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}

@@ -4,83 +4,96 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construburger</title>
-    <!--Estilo iconos y fuentes-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--wow.js hoja de estilo-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- Hojas de Estilo bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <!-- Hojas de Estilo-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilo.css">
+    <title>Construburger - Sistema Jean Campos</title>
 </head>
+
 <body>
-    <header>
-        <div>
-            <div class="container">
-                <div class="row">
-                    <h1>Bienvenido a Construburger</h1>
+
+<main class="container mt-5">
+    <h1 class="display-4 text-center">Bienvenido a Construburger</h1>
+    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi libero dolorem dolore quam sunt repudiandae, modi culpa, consectetur facilis ut quod mollitia, maxime sapiente quisquam suscipit tempora fugiat delectus ad.</p>
+    <div class="row">
+
+        <div class="col-md-3 col-lg-3" >
+            <h2>Selecciona los ingredientes:</h2>
+            <div id="seccionIngredientes" class="col-md-12 col-lg-12">
+        
+            <!--Aca se insertan los Ingredientes-->
+            <template id="Ingredientes"> 
+                <div div class="card my-1">
+                <button data-id="id" class="btn btn-primary"><span class="card-header">Nombre del Ingrediente </span> $<span id="precio"></span></button>
                 </div>
+            </template>
+            <!-- Fin de los ingredientes-->
             </div>
-        </div>   
-        </header>
-    <main class="container">
-        <div class="row">
-        <div class="col-md-2">
-            <h3>Selecciona los ingredientes:</h3>
-        <div>
-            <button class="btnPrincipal" data-ingredient="1">Carne</button>
-            <button class="btnPrincipal" data-ingredient="2">Carne de Soya</button>
-            <button class="btnPrincipal" data-ingredient="3">Queso</button>
-            <button class="btnPrincipal" data-ingredient="4">Tomate</button>
-            <button class="btnPrincipal" data-ingredient="5">Lechuga</button>
-            <button class="btnPrincipal" data-ingredient="6">Pepinillos</button>
-            <button class="btnPrincipal" data-ingredient="7">Cebolla</button>
-            <button class="btnPrincipal" data-ingredient="8">Tocino</button>
+            <br>
+            <h2>Selecciona los Adicionales:</h2>
+            <!--Aca se insertan los Extras-->
+            <div id="seccionExtras"  class="col-md-12 col-lg-12">
+            <template id="Extras"> 
+                <div div class="card my-2">
+                <button data-id="id" class="btn btn-secondary"><span class="extra-header">Extra</span> $<span id="precioextra"></span></button>
+                </div>
+            </template>
+        <!-- Fin de los Extrass-->
+            </div>
         </div>
-        </div> 
-        <div id="" class="col-md-8 col-sm-6 animate_animated animatefadeInUp animate_delay-1s">
-        <div id="panarriba" class="panarriba animate_animated animatefadeInUp animate_delay-1s">pan</div>
-        <div id="construburger"></div>
-        <div id="panabajo" class="panabajo animate_animated animatefadeInUp animate_delay-1s">pan</div>
-        <br><br>
-        <div id="precio"></div>
-        </div>  
-        <!--        
-        <div class="ingrediente tocino animate_animated animatefadeInUp animate_delay-1s">tocino</div>
-        <div class="ingrediente cebolla animate_animated animatefadeInUp animate_delay-1s">cebolla</div>
-        <div class="ingrediente pepinillo animate_animated animatefadeInUp animate_delay-1s">pepinillo</div>
-        <div class="ingrediente lechuga animate_animated animatefadeInUp animate_delay-1s">lechuga</div>
-        <div class="ingrediente tomate animate_animated animatefadeInUp animate_delay-1s">tomate</div>
-        <div class="ingrediente queso animate_animated animatefadeInUp animate_delay-1s">queso</div>    
-        <div class="ingrediente carne animate_animated animatefadeInUp animate_delay-1s">carne</div>
-    -->
 
-        <div class="col-md-2"><h3>Agregar aderezos sin costo:</h3>
-            <label><input type="checkbox" id="" value="">Mayonesa</label><br>
-            <label><input type="checkbox" id="" value="">Ketchup</label><br>
-            <label><input type="checkbox" id="" value="">Mostaza</label><br>
-            <label><input type="checkbox" id="" value="">Salsa Barbecue</label><br>
-            <label><input type="checkbox" id="" value="">Chimichurri</label><br>
-            <label><input type="checkbox" id="" value="">Salsa de Ajo</label><br>
-            <label><input type="checkbox" id="" value="">Salsa Verde</label><br>
-            <label><input type="checkbox" id="" value="">Salsa tártara</label><br></div> 
+        <div class="col-md-6 col-lg-6">
+            <section>
+            <div class="container">
+                <center><div class="pan"><img src="imagenes/construburger_pan2.png"></div></center>
+            <ul class=" list-group" id="seccionHamburguesa">
+            <!-- aca se vera la Hamburguesa -->
+            <template id="Hamburguesa">
+                <li class="list-group-item text-white text-center">
+                <img type="button" src="img" id="img-id" class="botoncito">
+                <span class="lead align-middle"></span>
+                <span class="lead mb-0"></span>
+                <!--<button class="btn btn-sm btn-danger">Eliminar</button>-->
+                </li>
+            </template>
+            </ul><!-- Fin de la Hamburguesa -->   
+            <center><div class="pan-cierre"><img src="imagenes/construburger_pan-cierre.png"></div></center>
+            </div>  
+            </section>
+        </div>
 
-            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
-            <div class="pagar"><a href="#"><button class="preciofinal">Finalizar Pedido</button></a>
+        <div class="col-md-3 col-lg-3">
+            <section>
+            <div class="container">
+            <h2>Extras:</h2>
+            <ul class=" list-group" id="seccionMuestraextras">
+            <!-- aca se veran los Extras -->
+            <template id="Muestraextras">
+                <li class="list-group-item text-white text-center">
+                <img type="button" src="img" id="img-id" class="botoncito2">
+                </li>
+            </template>
+            </ul><!-- Fin de los Extras -->   
+            </div>  
+            </section>
+
+            <section>
+            <h2>Total Carrito:</h2>
+            <!-- aca se inserta el valor total del carrito -->
+            <div><span id="total">Total</span></div>
+            <button class="btn btn-sm btn-danger">Calcular pedido</button>
+            <button class="btn btn-sm btn-danger">Ir a pagar</button>
+            </section>
+        </div>
     </div>
-    </main>
+</main>
 
-    <!-- JS DE LA APP-->
-    <script src="js/construburger.js"></script>
-    <!-- JS ACCIÓN WOW-->
-    <script src="js/wow.min.js"></script>
-    <script>
-    new WOW().init();
-    </script>
-    <!--SCRIPT BOOTSTRAP-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<!-- SCRIPTS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"
+>
+</script>
+<script src="js/constru2.js"></script>
 </body>
 </html>
