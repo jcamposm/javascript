@@ -12,8 +12,9 @@
 <body>
 
 <main class="container mt-5">
-    <h1 class="display-4 text-center">Bienvenido a Construburger</h1>
-    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi libero dolorem dolore quam sunt repudiandae, modi culpa, consectetur facilis ut quod mollitia, maxime sapiente quisquam suscipit tempora fugiat delectus ad.</p>
+    <h1 class="text-center">Bienvenido a Construburger</h1>
+    <p class="lead text-center">¿Estás listo para armar tu pedido?</p><br>
+    <br>
     <div class="row">
 
         <div class="col-md-3 col-lg-3" >
@@ -44,7 +45,7 @@
         <div class="col-md-6 col-lg-6">
             <section>
             <div class="container">
-                <center><div class="pan"><img src="imagenes/construburger_pan2.png"></div></center>
+                <div class="pan text-center"><img src="imagenes/construburger_pan2.png"></div>
             <ul class=" list-group" id="seccionHamburguesa">
             <!-- aca se vera la Hamburguesa -->
             <template id="Hamburguesa">
@@ -56,7 +57,7 @@
                 </li>
             </template>
             </ul><!-- Fin de la Hamburguesa -->   
-            <center><div class="pan-cierre"><img src="imagenes/construburger_pan-cierre.png"></div></center>
+            <div class="pan-cierre text-center"><img src="imagenes/construburger_pan-cierre.png"></div>
             </div>  
             </section>
         </div>
@@ -76,11 +77,10 @@
             </div>  
             </section>
 
-            <section>
+            <section id="pagar" class=" text-center">
             <h2>Total Carrito:</h2>
             <!-- aca se inserta el valor total del carrito -->
-            <div><span id="total">Total</span></div>
-            <button class="btn btn-sm btn-danger">Calcular pedido</button>
+            <div><span id="total"></span></div>
             <button class="btn btn-sm btn-danger">Ir a pagar</button>
             </section>
         </div>

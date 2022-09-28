@@ -1,0 +1,56 @@
+{"Ingredientes" : [
+    {
+        "id": "1",
+        "nombre": "Hamburguesa",
+        "precio":  "1000",
+        "imagen": "imagenes/construburger_carne.png"
+    },
+    {
+        "id":"2",
+        "nombre": "Hamburguesa de Soya",
+        "precio": "1200",
+        "imagen": "imagenes/construburger_soya.png"
+    },
+    {
+        "id":"3",
+        "nombre": "Lechuga",
+        "precio": "700",
+        "imagen": "imagenes/construburger_lechuga.png"
+    },
+    {
+        "id":"4",
+        "nombre": "Tomate",
+        "precio": "900",
+        "imagen": "imagenes/construburger_tomate.png"
+    },
+    {
+        "id":"5",
+        "nombre": "Cebolla",
+        "precio": "500",
+        "imagen": "imagenes/construburger_cebolla.png"
+    },
+    {
+        "id":"6",
+        "nombre": "Pepinillo",
+        "precio": "800",
+        "imagen": "imagenes/construburger_pepinillos.png"
+    },
+    {
+        "id":"7",
+        "nombre": "Queso",
+        "precio": "700",
+        "imagen": "imagenes/construburger_queso.png"
+    },
+    {
+        "id":"8",
+        "nombre": "Tocino",
+        "precio": "1200",
+        "imagen": "imagenes/construburger_tocino.png"
+    },
+    {
+        "id":"9",
+        "nombre": "Champiñones",
+        "precio": "1200","imagen": 
+        "imagenes/construburger_champinones.png"
+    }
+]}

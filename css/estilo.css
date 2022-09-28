@@ -36,3 +36,48 @@ button{
     margin-top: 5px !important;
     margin-bottom: 5px !important;
 }
+
+.btn-primary{
+    color: #fff !important;
+    background-color: #53270F !important ;
+    border-color: #53270F !important;
+}
+
+.btn-secondary{
+    color: #fff !important;
+    background-color: #F4A53C !important ;
+    border-color: #F4A53C !important;
+}
+
+h1 {
+    font-size: 60px;
+    /*background-color: #F4A53C !important ;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+*/
+}
+
+.btn-danger{
+    background-color: #000 !important ;
+    border-color: #000 !important;
+    width: 80% !important;
+    height: 40px !important;
+}
+
+.btn-danger:hover {
+    color: #fff !important;
+    background-color: #F4A53C !important;
+    border-color: #F4A53C !important;
+}
+
+#pagar {
+    border: solid 1px #000;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#pagar #total h2 {
+    font-size: 40px;
+    color: #000 ;
+ }
