@@ -18,12 +18,11 @@ const fragment = document.createDocumentFragment();
 
 /* Constructor de Ingredientes y cargamos el array de Ingredientes */
 class Ingrediente {
-    constructor(id, nombre, precio, imagen, cantidad) {
+    constructor(id, nombre, precio, imagen) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.imagen = imagen;
-        this.cantidad = cantidad;
     }
 }
 
@@ -42,11 +41,12 @@ const Ingredientes = [
 
 /* Constructor de Extras */
 class Extra{
-    constructor(id, nombre, precio, imagen) {
+    constructor(id, nombre, precio, imagen, cantidad) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.imagen = imagen;
+        this.cantidad = cantidad;
     }
 }
 
@@ -57,54 +57,35 @@ const Extras = [
     new Extra(13, "Papas y Bebida", 1990, "imagenes/construburger_combo.png"),
 ];
 
-
+const allProducts = [...Ingredientes, ... Extras]
+console.log(allProducts)
 /* Creamos la interaccion de los click con los botones */
 
 document.addEventListener("click", (evento) => {
-// console.log(evento.target.matches(".card button"));
+
 // Capturamos ID del Ingrediente el cual desean agregar a la hamburguesa
-    if (evento.target.matches(".my-1 button")) {
-    insertarHamburguesa(evento);
-    seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
-    }
+    evento.target.matches(".my-1 button") && insertarHamburguesa(evento);
 
 // Ingrediente que desean eliminar por ID
-
-    if (evento.target.matches(".list-group-item .botoncito")) {
-        botoneliminar(evento);
-        seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
-    }
-
-// Ingrediente que desean sumarle cantidad capturado por ID
-
-    if (evento.target.matches(".list-group-item .btn-success")) {
-        botonSumar(evento);
-        seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
-    }
+    evento.target.matches(".list-group-item .botoncito") && botoneliminar(evento);
 
 // Extras del combo capturados por ID
-    if (evento.target.matches(".my-2 button")) {
-        insertarExtras(evento);
-        seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
-    }
+    evento.target.matches(".my-2 button") && insertarExtras(evento);
 
 // Ingrediente que desean eliminar por ID
 
-    if (evento.target.matches(".list-group-item .botoncito2")) {
-        eliminarextras(evento);
-        seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
-    }
+    evento.target.matches(".list-group-item .botoncito2") && eliminarextras(evento);
 
 });
 
 
 // Lista de Ingredientes
 
-Ingredientes.forEach((item) => {
+Ingredientes.forEach(({nombre, precio, id} ) => {
     const clone = templateIngredientes.content.cloneNode(true);
-    clone.querySelector(".card-header").textContent = item.nombre;
-    clone.querySelector("#precio").textContent = item.precio;
-    clone.querySelector("button").dataset.id = item.id;
+    clone.querySelector(".card-header").textContent = nombre;
+    clone.querySelector("#precio").textContent = precio;
+    clone.querySelector("button").dataset.id = id;
     fragment.appendChild(clone);
 });
 seccionIngredientes.appendChild(fragment);
@@ -112,10 +93,10 @@ seccionIngredientes.appendChild(fragment);
 // PINTAMOS el template de la Hamburguesa
 const verHamburguesa = () => {
     seccionHamburguesa.textContent = "";
-    carrito.forEach((item) => {
+    carrito.forEach(({imagen, id} ) => {
     const clone = templateHamburguesas.content.cloneNode(true);
-    clone.querySelector("#img-id").src = item.imagen;
-    clone.querySelector(".botoncito").dataset.id = item.id;
+    clone.querySelector("#img-id").src = imagen;
+    clone.querySelector(".botoncito").dataset.id = id;
     fragment.appendChild(clone);
     });
     seccionHamburguesa.appendChild(fragment);
@@ -136,6 +117,7 @@ const prod = Ingredientes.find((item) => item.id === eventoId)
         );
     verHamburguesa();
     recargaLocalStorage();
+    seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
 };
 
 // Eliminar hamburguesada
@@ -147,6 +129,8 @@ const botoneliminar = (evento) => {
     console.log(carrito);
     verHamburguesa();
     recargaLocalStorage();
+    seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
+
 };
 
 // quitar hamburguesada
@@ -157,23 +141,24 @@ const quitar =( index )=>{
 
 // Dibujamos la lista de Extras
 
-Extras.forEach((item) => {
+Extras.forEach(({id, nombre, precio}) => {
     const clone = templateExtras.content.cloneNode(true);
-    clone.querySelector(".extra-header").textContent = item.nombre;
-    clone.querySelector("#precioextra").textContent = item.precio;
-    clone.querySelector("button").dataset.id = item.id;
+    clone.querySelector(".extra-header").textContent = nombre;
+    clone.querySelector("#precioextra").textContent = precio;
+    clone.querySelector("button").dataset.id = id;
     fragment.appendChild(clone);
 });
 seccionExtras.appendChild(fragment);
 
-// PINTAMOS el template de los Extras
+// Pintamos el template de los Extras
 const verExtras = () => {
     seccionMuestraextras.textContent = "";
-    pedido2.forEach((item) => {
+    pedido2.forEach(({id, nombre, imagen, cantidad} ) => {
     const clone = templateMuestraextras.content.cloneNode(true);
-    clone.querySelector("#img-id").src = item.imagen;
-    clone.querySelector(".botoncito2").dataset.id = item.id;
-
+    clone.querySelector("#img-id").src = imagen;
+    clone.querySelector(".botoncito2").dataset.id = id;
+    clone.querySelector(".badge").textContent = cantidad;
+    clone.querySelector(".nombre-extra").textContent = nombre;
     fragment.appendChild(clone);
     });
     seccionMuestraextras.appendChild(fragment);
@@ -184,29 +169,36 @@ const insertarExtras = (evento) => {
     //console.log(evento.target.dataset);
 const eventoId = Number(evento.target.dataset.id);
     // console.log("esto devuelve", eventoId);
-const prod = Extras.find((item) => item.id === eventoId)
-    pedido2.push(
-        new Extra(
-            prod.id,
-            prod.nombre,
-            prod.precio,
-            prod.imagen,
-            (prod.cantidad = 1)
-            )
-        );
-    verExtras();
-    recargaLocalStorage();
+const prod = Extras.find((item) => item.id === eventoId);
+const buscarCoincidencia = pedido2.findIndex((item) => item.id === eventoId);
+    //console.log(buscarCoincidencia);
+buscarCoincidencia === -1 ? pedido2.push( new Extra( prod.id, prod.nombre, prod.precio, prod.imagen, (prod.cantidad = 1))) : pedido2[buscarCoincidencia].cantidad++;
+verExtras();
+recargaLocalStorage();
+seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
+
 };
 
 /// quitar Extra
 
 const eliminarextras = (evento) => {
     const eventoId = Number(evento.target.dataset.id);
-    const buscar = pedido2.findIndex(x=>x.id === eventoId);
-    quitarextras (buscar);
+    pedido2 = pedido2.filter((item) => {
+        if (item.id === eventoId) {
+            if (item.cantidad > 0) {
+            item.cantidad--;
+            if (item.cantidad === 0) return;
+            return item;
+            }
+        } else {
+            return item;
+        }
+        });
+    //const buscar = pedido2.findIndex(x=>x.id === eventoId);
     console.log(pedido2);
     verExtras();
     recargaLocalStorage();
+    seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
 };
 
 /// quitar extras
@@ -228,8 +220,9 @@ function calcularTotal(carrito){
     //FUNCIÓN PARA CALCULAR EXTRAS
 function calcularTotal2(pedido2){
     let total2 = pedido2.reduce((acumulador, pedido)=> {
-        return acumulador + pedido.precio
+        return acumulador + pedido.precio*pedido.cantidad
     },0)
+
     return total2}
 
 
