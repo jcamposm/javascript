@@ -59,6 +59,7 @@ const Extras = [
 
 const allProducts = [...Ingredientes, ... Extras]
 console.log(allProducts)
+
 /* Creamos la interaccion de los click con los botones */
 
 document.addEventListener("click", (evento) => {
@@ -230,4 +231,32 @@ function calcularTotal2(pedido2){
 function recargaLocalStorage(){
     localStorage.setItem("Carrito",JSON.stringify(carrito))
     localStorage.setItem("Extras",JSON.stringify(pedido2))
+}
+
+
+//sweet Alert
+const pagando = document.querySelector("#pagar .btn-danger")
+pagando.addEventListener("click", () => {
+    
+    swal({
+    title: "¿Estas seguro que deseas pagar?",
+    text: "Confirma para redirigir al botón de pago!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((irPagar) => {
+    if (irPagar && carrito.length >= 1) {
+      swal("¡Esperamos que  disfrutes tu pedido! ", {
+        icon: "success", buttons: false, timer: 2000,});
+        setTimeout(()=>{redirigir()}, 2000)
+    } else {
+      swal("¡Debes agregar algún ingrediente a tu pedido!");
+    }
+  }); 
+})
+
+
+function redirigir(){
+    window.location.href="./pago.html"
 }
