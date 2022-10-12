@@ -26,7 +26,19 @@ class Ingrediente {
     }
 }
 
-const Ingredientes = [
+const Ingredientes = []
+
+fetch("js/ingredientes.json")
+.then ((respuesta) => respuesta.json())
+.then ((data) => {
+    data.forEach((ingrediente) =>{ 
+        Ingredientes.push(ingrediente)
+    })
+    
+})
+console.log(Ingredientes)
+
+/*const Ingredientes = [
     new Ingrediente(1, "Hamburguesa", 1000, "imagenes/construburger_carne.png"),
     new Ingrediente(2, "Hamburguesa de Soya", 1200, "imagenes/construburger_soya.png"),
     new Ingrediente(3, "Lechuga", 700, "imagenes/construburger_lechuga.png"),
@@ -36,7 +48,7 @@ const Ingredientes = [
     new Ingrediente(7, "Queso", 700, "imagenes/construburger_queso.png"),
     new Ingrediente(8, "Tocino", 1200, "imagenes/construburger_tocino.png"),
     new Ingrediente(9, "Champiñones", 1200, "imagenes/construburger_champinones.png"),
-]
+]*/
 
 
 /* Constructor de Extras */
@@ -50,15 +62,27 @@ class Extra{
     }
 }
 
-const Extras = [
+/*const Extras = [
     new Extra(10, "Ketchup", 100, "imagenes/construburger_ketchup.png"),
     new Extra(11, "Mayonesa", 100, "imagenes/construburger_mayo.png"),
     new Extra(12, "Mostaza", 100, "imagenes/construburger_mostaza.png"),
     new Extra(13, "Papas y Bebida", 1990, "imagenes/construburger_combo.png"),
-];
+];*/
 
-const allProducts = [...Ingredientes, ... Extras]
-console.log(allProducts)
+const Extras = []
+
+fetch("js/extras.json")
+.then ((respuesta) => respuesta.json())
+.then ((data) => {
+    data.forEach((extra) =>{ 
+        Extras.push(extra)
+    })
+    
+})
+
+console.log(Extras)
+//const allProducts = [...Ingredientes, ... Extras]
+//console.log(allProducts)
 
 /* Creamos la interaccion de los click con los botones */
 
@@ -81,15 +105,18 @@ document.addEventListener("click", (evento) => {
 
 
 // Lista de Ingredientes
-
-Ingredientes.forEach(({nombre, precio, id} ) => {
+fetch("js/ingredientes.json")
+.then ((respuesta) => respuesta.json())
+.then ((Ingredientes) => {
+Ingredientes.forEach((comida) => {
     const clone = templateIngredientes.content.cloneNode(true);
-    clone.querySelector(".card-header").textContent = nombre;
-    clone.querySelector("#precio").textContent = precio;
-    clone.querySelector("button").dataset.id = id;
+    clone.querySelector(".card-header").textContent = comida.nombre;
+    clone.querySelector("#precio").textContent = comida.precio;
+    clone.querySelector("button").dataset.id = comida.id;
     fragment.appendChild(clone);
-});
+})
 seccionIngredientes.appendChild(fragment);
+})
 
 // PINTAMOS el template de la Hamburguesa
 const verHamburguesa = () => {
@@ -141,7 +168,9 @@ const quitar =( index )=>{
 };
 
 // Dibujamos la lista de Extras
-
+fetch("js/extras.json")
+.then ((respuesta) => respuesta.json())
+.then ((Extras) => {
 Extras.forEach(({id, nombre, precio}) => {
     const clone = templateExtras.content.cloneNode(true);
     clone.querySelector(".extra-header").textContent = nombre;
@@ -150,7 +179,7 @@ Extras.forEach(({id, nombre, precio}) => {
     fragment.appendChild(clone);
 });
 seccionExtras.appendChild(fragment);
-
+})
 // Pintamos el template de los Extras
 const verExtras = () => {
     seccionMuestraextras.textContent = "";

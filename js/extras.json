@@ -1,0 +1,6 @@
+[
+    {"id": 10,"nombre": "Ketchup","precio": 200,"imagen": "imagenes/construburger_ketchup.png"},
+    {"id": 11,"nombre": "Mayonesa","precio": 100,"imagen": "imagenes/construburger_mayo.png"},
+    {"id": 12,"nombre": "Mostaza","precio": 100,"imagen": "imagenes/construburger_mostaza.png"},
+    {"id": 13,"nombre": "Papas y Bebida","precio": 1990,"imagen": "imagenes/construburger_combo.png"}
+]
