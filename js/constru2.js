@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     verHamburguesa();
     verExtras();
     recargaLocalStorage();
+    seccionTotal.innerHTML = `<h2>$${calcularTotal(carrito) + calcularTotal2(pedido2)}</h2>`
     });
     
-
 // Declaracion de variables :
 let carrito = JSON.parse(localStorage.getItem("Carrito")) || [];
 let pedido2 = JSON.parse(localStorage.getItem("Extras")) || [];
