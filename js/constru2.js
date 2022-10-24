@@ -1,3 +1,11 @@
+//Recargar:
+document.addEventListener("DOMContentLoaded", () => {
+    verHamburguesa();
+    verExtras();
+    recargaLocalStorage();
+    });
+    
+
 // Declaracion de variables :
 let carrito = JSON.parse(localStorage.getItem("Carrito")) || [];
 let pedido2 = JSON.parse(localStorage.getItem("Extras")) || [];
