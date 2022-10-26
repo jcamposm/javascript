@@ -98,7 +98,7 @@ document.addEventListener("click", (evento) => {
 
 // Capturamos ID del Ingrediente el cual desean agregar a la hamburguesa
     evento.target.matches(".my-1 button") && insertarHamburguesa(evento);
-
+    
 // Ingrediente que desean eliminar por ID
     evento.target.matches(".list-group-item .botoncito") && botoneliminar(evento);
 
@@ -118,8 +118,8 @@ fetch("js/ingredientes.json")
 .then ((Ingredientes) => {
 Ingredientes.forEach((comida) => {
     const clone = templateIngredientes.content.cloneNode(true);
-    clone.querySelector(".card-header").textContent = comida.nombre;
-    clone.querySelector("#precio").textContent = comida.precio;
+    contenido = `${comida.nombre} $${comida.precio} `;
+    clone.querySelector(".btn-primary").textContent = contenido;
     clone.querySelector("button").dataset.id = comida.id;
     fragment.appendChild(clone);
 })
@@ -181,8 +181,8 @@ fetch("js/extras.json")
 .then ((Extras) => {
 Extras.forEach(({id, nombre, precio}) => {
     const clone = templateExtras.content.cloneNode(true);
-    clone.querySelector(".extra-header").textContent = nombre;
-    clone.querySelector("#precioextra").textContent = precio;
+    contenido = `${nombre} $${precio} `;
+    clone.querySelector(".btn-secondary").textContent = contenido;
     clone.querySelector("button").dataset.id = id;
     fragment.appendChild(clone);
 });
