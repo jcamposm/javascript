@@ -288,7 +288,7 @@ pagando.addEventListener("click", () => {
         icon: "success", buttons: false, timer: 2000,});
         setTimeout(()=>{redirigir()}, 2000)
     } else {
-      swal("¡Debes agregar algún ingrediente a tu pedido!");
+      swal("¡Volviendo al pedido!");
     }
   }); 
 })
