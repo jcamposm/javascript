@@ -12,16 +12,15 @@
 <body>
 
 <main class="container mt-5">
-    <h1 class="text-center">Bienvenido a Construburger</h1>
-    <p class="lead text-center">¿Estás listo para armar tu pedido?</p><br>
+    <h1>Construburger</h1>
     <br>
     <div class="row">
 
-        <div class="col-md-3 col-lg-3" >
+        <div class="col-md-4 col-lg-4" >
+            <div class="borde-amarillo text-center">
             <h2>Selecciona los ingredientes:</h2>
-            <div id="seccionIngredientes" class="col-md-12 col-lg-12">
-        
             <!--Aca se insertan los Ingredientes-->
+            <div id="seccionIngredientes" class="col-md-12 col-lg-12">
             <template id="Ingredientes"> 
                 <div class="card my-1">
                 <button data-id="id" class="btn btn-primary">Nombre del Ingrediente</button></a>
@@ -29,8 +28,9 @@
             </template>
             <!-- Fin de los ingredientes-->
             </div>
-            <br>
-            <h2>Selecciona los Adicionales:</h2>
+            </div>
+            <div class="borde-blanco text-center">
+            <h2>Selecciona los Extras:</h2>
             <!--Aca se insertan los Extras-->
             <div id="seccionExtras"  class="col-md-12 col-lg-12">
             <template id="Extras"> 
@@ -38,11 +38,12 @@
                 <button data-id="id" class="btn btn-secondary"></button>
                 </div>
             </template>
+            </div>
         <!-- Fin de los Extrass-->
             </div>
         </div>
 
-        <div class="col-md-6 col-lg-6">
+        <div class="col-md-5 col-lg-5">
             <section>
             <div class="container">
                 <div class="pan text-center"><img src="imagenes/construburger_pan2.png"></div>
@@ -63,20 +64,16 @@
         </div>
 
         <div class="col-md-3 col-lg-3">
-            <section>
-            <div class="container">
-            <h2>Extras:</h2>
-            <ul class=" list-group" id="seccionMuestraextras">
+            <section class="padding20">
             <!-- aca se veran los Extras -->
-            <template id="Muestraextras">
-                <li class="list-group-item text-white text-center">
-                <img type="button" src="img" id="img-id" class="botoncito2"><br>
-                <span class="badge bg-secondary rounded-pill align-middle">Nº</span>
-                <span class="lead mb-0 nombre-extra">Nombre Extra</span>
-                </li>
-            </template>
-            </ul><!-- Fin de los Extras -->   
-            </div>  
+                <div class="row" id="seccionMuestraextras">
+                    <template id="Muestraextras">
+                    <div class="col-md-6 text-center">
+                    <img type="button" src="img" id="img-id" class="botoncito2"><br>
+                    <span class="badge bg-secondary rounded-pill align-middle">Nº</span>
+                    <span class="lead mb-0 nombre-extra">Nombre Extra</span>
+                </div></template></div>
+                </ul><!-- Fin de los Extras -->    
             </section>
 
             <section id="pagar" class=" text-center">

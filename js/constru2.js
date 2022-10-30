@@ -107,7 +107,7 @@ document.addEventListener("click", (evento) => {
 
 // Ingrediente que desean eliminar por ID
 
-    evento.target.matches(".list-group-item .botoncito2") && eliminarextras(evento);
+    evento.target.matches(".botoncito2") && eliminarextras(evento);
 
 });
 
